@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Facebook Ad Assistant",
+  "version": "1.0",
+  "description": "Facebook广告数据分析与管理助手",
+  "permissions": [
+    "storage",
+    "tabs",
+    "webRequest",
+    "scripting",
+    "activeTab",
+    "downloads"
+  ],
+  "host_permissions": [
+    "*://*.facebook.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.facebook.com/*",
+        "*://business.facebook.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon.png"
+    }
+  },
+  "web_accessible_resources": [{
+    "resources": [
+      "videoDownloader.js",
+      "adLibraryVideo.js",
+      "downloadManager.js"
+    ],
+    "matches": ["<all_urls>"]
+  }],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+} 

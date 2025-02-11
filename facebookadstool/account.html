@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>广告账号管理</title>
+  <link rel="stylesheet" href="account.css">
+</head>
+<body>
+  <div id="loadingIndicator" class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">加载中...</div>
+  </div>
+  <div class="container">
+    <div class="header">
+      <h1>广告账号管理</h1>
+      <div class="controls">
+        <button id="refreshBtn" class="btn">刷新数据</button>
+        <button id="exportBtn" class="btn">导出报告</button>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="搜索账号...">
+      </div>
+      <div class="toolbar-actions">
+        <select id="statusFilter" class="filter-dropdown">
+          <option value="all">所有状态</option>
+          <option value="active">活跃</option>
+          <option value="inactive">非活跃</option>
+        </select>
+        <button id="addAccountBtn" class="btn">添加账号</button>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="accounts-list">
+        <div id="accountsList" class="accounts-container">
+          <!-- 账号列表将在这里动态生成 -->
+        </div>
+      </div>
+
+      <div class="account-details">
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+        
+        <div class="metric-cards">
+          <div class="metric-card">
+            <h3>总支出</h3>
+            <div id="totalSpend" class="metric-value">-</div>
+          </div>
+          <div class="metric-card">
+            <h3>总展示</h3>
+            <div id="totalImpressions" class="metric-value">-</div>
+          </div>
+          <div class="metric-card">
+            <h3>平均CTR</h3>
+            <div id="avgCTR" class="metric-value">-</div>
+          </div>
+        </div>
+
+        <div id="accountInfo" class="account-info">
+          <h2>账号信息</h2>
+          <div class="info-grid">
+            <!-- 账号信息将在这里显示 -->
+          </div>
+        </div>
+
+        <div id="accountInsights" class="account-insights">
+          <h2>账号数据</h2>
+          <div class="insights-grid">
+            <!-- 账号数据将在这里显示 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 添加账号模态框 -->
+  <div id="addAccountModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>添加广告账号</h2>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>账号ID</label>
+          <input type="text" id="accountIdInput" placeholder="输入广告账号ID">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelAddAccount" class="btn btn-secondary">取消</button>
+        <button id="confirmAddAccount" class="btn">确认添加</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="account-entry.js" defer></script>
+</body>
+</html> 
